@@ -5,7 +5,7 @@ let getJSONData = function(url) {
             if (response.ok) {
                 return response.json();
             } else {
-                throw Error(response.statusText);
+                throw new Error(response.statusText);
             }
         })
         .then(function(response) {
@@ -26,7 +26,8 @@ function mostrarImagen(galaxyArray) {
     for (let i = 0; i < galaxyArray.length; i++) {
         let galaxy = galaxyArray[i];
 
-        if (galaxy.data.length > 0 && galaxy.links.length > 0) {
+        //Comprobar que haya links y que exista al menos un elemento en los arrays de data y links > 0
+        if (galaxy.data.length > 0 && galaxy.links && galaxy.links.length > 0){
             htmlContentToAppend += `
             <div id="card" class="col-lg-4">
                 <div class="card mb-4 custom-card">
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let inputBuscar = document.getElementById('inputBuscar').value;
         let searchQuery = encodeURIComponent(inputBuscar.trim());
         const NASA_URL = `https://images-api.nasa.gov/search?q=${searchQuery}`; // Construye la URL
-
+        console.log(NASA_URL);
         getJSONData(NASA_URL).then(function(resultObj) {
             if (resultObj.status === "ok") {
                 galaxyArray = resultObj.data.collection.items; 
