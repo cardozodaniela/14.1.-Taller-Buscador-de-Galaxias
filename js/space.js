@@ -32,12 +32,14 @@ function mostrarImagen(galaxyArray) {
             <div id="card" class="col-lg-4">
                 <div class="card mb-4 custom-card">
                     <img id="imagen" class="bd-placeholder-img card-img" src="${galaxy.links[0].href}" alt="Imagen representativa">
-                    <div class="card-body">
+                    <div class="overflow-y-scroll">
+                    <div id="cardbody" class="card-body">
                         <h4>${galaxy.data[0].title}</h4>
-                        <p class="description">${galaxy.data[0].description || "Descripción no disponible."}</p>
+                        <p id="descripcion">${galaxy.data[0].description || "Descripción no disponible."}</p>
                         <p>${galaxy.data[0].date_created || "Fecha no disponible."}</p>
                     </div>
                 </div>
+             </div>
             </div>`;
         }
     }
