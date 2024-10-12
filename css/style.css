@@ -1,0 +1,12 @@
+main {
+    min-height: calc(100vh - 160px);
+  }
+
+#card{
+  display: flex;
+  }
+
+#imagen {
+  height: 300px;
+  width: 300px;
+}
